@@ -1,0 +1,5 @@
+Art folder
+
+If you are developer try not to change this too often instead use assets stored here by art team, if you changed anything, always notify art team.
+
+If you are artist try not to change folders other than this, if you changed it, always notify dev team.

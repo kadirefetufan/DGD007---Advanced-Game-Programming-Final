@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66792eb1a855c64eb5817f287945e9b, type: 3}
+  m_Name: TestDeviceList
+  m_EditorClassIdentifier: 
+  List:
+  - Username: Cuneyt Taskent
+    Model: iPhone SE
+    SerialNumber: 
+    IDFA: 62C0EF81-5601-478D-A2A7-C096CF16DF01
+  - Username: "Mutlu \xC7al\u0131ko\u011Flu"
+    Model: iPhone 8 Plus
+    SerialNumber: FD7Y465JCM2
+    IDFA: 323998D1-237E-46CC-A958-6C026C7F42AD
+  - Username: Ahmet Mencioglu
+    Model: iPhone 8
+    SerialNumber: C6KVL6DSJC69
+    IDFA: FCAAEC63-B931-490A-914A-C049FD09291D
+  - Username: Ahmet Mencioglu
+    Model: iPhone 8
+    SerialNumber: FFMZ76XRJC67
+    IDFA: 103FE65E-A678-4A10-92B2-91E56C47AAF6
+  - Username: Ahmet Mencioglu
+    Model: iPhone Xs Max
+    SerialNumber: C39XJ7WDKPH6
+    IDFA: D7E9BD93-6322-4DCE-B6D3-ABC6B21BB423
+  - Username: Enrich Creative
+    Model: iPhone X
+    SerialNumber: DNPVTJZAJCL9
+    IDFA: A0D3EEC4-A763-47DA-B162-202113A99A90
+  - Username: Can Sen
+    Model: iPhone 7
+    SerialNumber: Personal
+    IDFA: 9350E11C-ED7D-4BC3-A8D6-91EED0631668
+  - Username: Egehan Tolunay
+    Model: iPhone 7
+    SerialNumber: F4GTV555HG7H
+    IDFA: 
+  - Username: Busra
+    Model: iPhone 6s
+    SerialNumber: Personal
+    IDFA: F781FEF5-DF61-4181-91D5-E2F9859438E3
+  - Username: Nur
+    Model: iPhone XR
+    SerialNumber: Personal
+    IDFA: ED7A63D9-47DC-4691-8103-2764EC5F5A13
+  - Username: Yusuf
+    Model: iPhone 6
+    SerialNumber: Personal
+    IDFA: 0985BA7B-8594-466F-87CB-7CB2E6EE4337
+  - Username: Enrich Creative
+    Model: iPad (7th generation)
+    SerialNumber: DMPD6F29MF3R
+    IDFA: C2FE22BD-5C79-4075-B565-36C8A43D2E35
+  - Username: Burak
+    Model: iPhone 11
+    SerialNumber: Personal
+    IDFA: '4039B31C-A31C-406E-8DF0-7876447EEFC7 '
+  - Username: Emre Kalafat
+    Model: iPhone 7
+    SerialNumber: Personal
+    IDFA: FD6B06B8-C8C0-41E1-BEF3-46E8EFAA0C12
+  - Username: "C\xFCneyt"
+    Model: Huawei Mate 9 Prr
+    SerialNumber: 
+    IDFA: 2de0eae7-63e6-445f-98a4-78a9bb0f55f9
+  - Username: "Mutlu \xC7al\u0131koglu"
+    Model: xiaomi redmi note 8 pro
+    SerialNumber: 
+    IDFA: 4db91714-0740-47ee-851a-5a9c7d4bc69b
+  - Username: Tayfur Gazioglu
+    Model: Samsung Node 10 Plus
+    SerialNumber: 
+    IDFA: '2de0eae7-63e6-445f-98a4-78a9bb0f55f9  '
