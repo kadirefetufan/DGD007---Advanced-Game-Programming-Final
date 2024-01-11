@@ -179,7 +179,7 @@
       }
     },
     "rich-modules": {
-      "version": "file:rich-modules",
+      "version": "file:enrich-modules",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
