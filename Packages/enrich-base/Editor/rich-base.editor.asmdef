@@ -1,7 +1,8 @@
 {
     "name": "rich-base.editor",
     "references": [
-        "GUID:e5160b5cfc335cd419f41616e228bc83"
+        "GUID:e5160b5cfc335cd419f41616e228bc83",
+        "GUID:29c250a97e54e43ceba4a37b353452c2"
     ],
     "includePlatforms": [
         "Editor"
