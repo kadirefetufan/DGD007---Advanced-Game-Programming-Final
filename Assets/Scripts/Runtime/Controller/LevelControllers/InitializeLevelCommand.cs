@@ -1,14 +1,13 @@
 using Runtime.Model;
+using Runtime.Model.Level;
 using strange.extensions.command.impl;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Runtime.Controller
+namespace Runtime.Controller.LevelControllers
 {
     public class InitializeLevelCommand : Command
     {
         [Inject] private ILevelModel LevelModel { get; set; }
-
         private byte _currentLevelID;
 
         public override void Execute()
@@ -24,7 +23,7 @@ namespace Runtime.Controller
 
         private void InitializeLevel()
         {
-            Object.Instantiate(Resources.Load<GameObject>($"Prefabs/LevelPrefabs/level {LevelModel.LevelID}"), LevelModel.LevelHolder.transform,
+            Object.Instantiate(LevelModel.LevelObjects[_currentLevelID % LevelModel.TotalLevelCount], LevelModel.LevelHolder.transform,
                 true);
         }
     }

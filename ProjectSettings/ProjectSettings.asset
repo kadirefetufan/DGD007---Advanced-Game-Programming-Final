@@ -788,7 +788,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: TextMeshPro
+    Android: TextMeshPro;ODIN_INSPECTOR
     Nintendo Switch: TextMeshPro
     PS4: TextMeshPro
     Stadia: TextMeshPro

@@ -33,11 +33,11 @@ MonoBehaviour:
     - ES3.Runtime
     - StompyRobot.SRF
     - Cinemachine
-    - Assembly-CSharp
     - rich-base.editor
     - Assembly-CSharp-firstpass
     - PPv2URPConverters
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
+    - Assembly-CSharp
     - StompyRobot.SRDebugger
     - StompyRobot.SRDebugger.Editor
     - StompyRobot.SRF.Editor

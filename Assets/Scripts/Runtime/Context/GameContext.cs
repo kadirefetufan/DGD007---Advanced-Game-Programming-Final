@@ -1,8 +1,20 @@
 using Rich.Base.Runtime.Concrete.Context;
 using Rich.Base.Runtime.Extensions;
 using Runtime.Controller;
+using Runtime.Controller.LevelControllers;
+using Runtime.Mediators;
+using Runtime.Mediators.Camera;
+using Runtime.Mediators.Input;
+using Runtime.Mediators.Player;
 using Runtime.Model;
+using Runtime.Model.Input;
+using Runtime.Model.Level;
+using Runtime.Model.Player;
 using Runtime.Signals;
+using Runtime.Views;
+using Runtime.Views.Camera;
+using Runtime.Views.Input;
+using Runtime.Views.Player;
 
 namespace Runtime.Context
 {
@@ -26,12 +38,23 @@ namespace Runtime.Context
             _levelSignals = injectionBinder.BindCrossContextSingletonSafely<LevelSignals>();
 
             injectionBinder.Bind<ILevelModel>().To<LevelModel>().CrossContext().ToSingleton();
+            injectionBinder.Bind<IInputModel>().To<InputModel>().CrossContext().ToSingleton();
+            injectionBinder.Bind<IPlayerModel>().To<PlayerModel>().CrossContext().ToSingleton();
 
             //Mediation Bindings
+
+            mediationBinder.BindView<CameraView>().ToMediator<CameraMediator>();
+            mediationBinder.BindView<PlayerView>().ToMediator<PlayerMediator>();
+            mediationBinder.BindView<InputView>().ToMediator<InputMediator>();
 
             //Command Bindings
             commandBinder.Bind(_levelSignals.onInitializeLevel).To<InitializeLevelCommand>();
             commandBinder.Bind(_levelSignals.onDestroyLevel).To<DestroyLevelCommand>();
+            commandBinder.Bind(_levelSignals.onRestartLevel).To<LevelFailedCommand>();
+            commandBinder.Bind(_levelSignals.onNextLevel).To<LevelSuccessfulCommand>();
+
+
+            // commandBinder.Bind(_levelSignals.onGetLevelActiveLevelCount).To<GetActiveLevelCommand>();
         }
 
         public override void Launch()
