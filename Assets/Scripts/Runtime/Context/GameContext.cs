@@ -56,6 +56,7 @@ namespace Runtime.Context
             
             commandBinder.Bind(_coreGameSignals.onLevelFailed).To<OpenLevelFailedScreenCommand>();
             commandBinder.Bind(_coreGameSignals.onLevelSuccessful).To<OpenLevelSuccessfulScreenCommand>();
+            commandBinder.Bind(_coreGameSignals.onReset).To<OpenStartScreenPanelCommand>();
 
             commandBinder.Bind(_playerSignals.onForceCommand).To<ForceBallsToPoolCommand>();
             commandBinder.Bind(_playerSignals.onStageAreaSuccessful).To<OnStageAreaSuccessfulCommand>();

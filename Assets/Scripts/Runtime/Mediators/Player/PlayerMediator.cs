@@ -3,6 +3,7 @@ using Rich.Base.Runtime.Concrete.Injectable.Mediator;
 using Runtime.Model.Player;
 using Runtime.Signals;
 using Runtime.Views.Player;
+using Runtime.Views.Pool;
 using UnityEngine;
 
 namespace Runtime.Mediators.Player
@@ -37,17 +38,19 @@ namespace Runtime.Mediators.Player
             View.IsReadyToPlay(true);
         }
 
-        private void OnStageAreaEntered(Transform view)
+        private void OnStageAreaEntered(Transform view, Transform other)
         {
             PlayerSignals.onForceCommand.Dispatch(view, Model.PlayerData.PlayerData.ForceData);
             InputSignals.onDisableInput.Dispatch();
 
             DOVirtual.DelayedCall(3, () =>
             {
-                bool result = (bool)PlayerSignals.onGetPoolResult?.Invoke(Model.StageValue);
+                bool result = other.GetComponentInChildren<PoolControllerView>().OnGetPoolResult(Model.StageValue);
 
-                if (result)
+                Debug.Log(result);
+                if (result != null && (bool)result)
                 {
+                    Debug.Log("Result True");
                     PlayerSignals.onStageAreaSuccessful.Dispatch(Model.StageValue);
                     InputSignals.onEnableInput.Dispatch();
                 }
@@ -61,6 +64,7 @@ namespace Runtime.Mediators.Player
         private void StageAreaSuccessful(byte obj)
         {
             Model.StageValue++;
+            View.IsReadyToPlay(true);
             View.ShowUpText();
             View.PlayConfettiParticle();
             View.ScaleUpPlayer();

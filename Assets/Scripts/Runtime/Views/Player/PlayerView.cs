@@ -17,7 +17,7 @@ namespace Runtime.Views.Player
         #region Public Variables
 
         public UnityAction onReset = delegate { };
-        public UnityAction<Transform> onStageAreaEntered = delegate { };
+        public UnityAction<Transform, Transform> onStageAreaEntered = delegate { };
         public UnityAction onFinishAreaEntered = delegate { };
 
         #endregion
@@ -117,7 +117,7 @@ namespace Runtime.Views.Player
             _isReadyToPlay = condition;
         }
 
-        private void IsReadyToMove(bool condition)
+        public void IsReadyToMove(bool condition)
         {
             _isReadyToMove = condition;
         }
@@ -126,7 +126,7 @@ namespace Runtime.Views.Player
         {
             if (other.CompareTag(_stageArea))
             {
-                onStageAreaEntered?.Invoke(transform);
+                onStageAreaEntered?.Invoke(transform, other.transform.parent.transform);
 
                 IsReadyToPlay(false);
             }

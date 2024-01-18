@@ -15,7 +15,6 @@ namespace Runtime.Mediators.Pool
         public override void OnRegister()
         {
             base.OnRegister();
-            PlayerSignals.onGetPoolResult += View.OnGetPoolResult;
             PlayerSignals.onStageAreaSuccessful.AddListener(View.OnActivateTweens);
             PlayerSignals.onStageAreaSuccessful.AddListener(View.OnChangePoolColor);
         }
@@ -24,7 +23,6 @@ namespace Runtime.Mediators.Pool
         {
             base.OnRemove();
 
-            PlayerSignals.onGetPoolResult -= View.OnGetPoolResult;
             PlayerSignals.onStageAreaSuccessful.RemoveListener(View.OnActivateTweens);
             PlayerSignals.onStageAreaSuccessful.RemoveListener(View.OnChangePoolColor);
         }
@@ -32,7 +30,7 @@ namespace Runtime.Mediators.Pool
         public override void OnEnabled()
         {
             base.OnEnabled();
-            View.SetPoolData(LevelModel.LevelData.Data[LevelModel.GetActiveLevel()].PoolData[View.StageValue]);
+            View.SetPoolData(LevelModel.LevelData.Data[LevelModel.GetLevelValue()].PoolData[View.StageValue]);
         }
     }
 }
