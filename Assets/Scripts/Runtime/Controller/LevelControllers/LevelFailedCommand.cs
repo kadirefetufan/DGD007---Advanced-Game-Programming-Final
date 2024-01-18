@@ -6,12 +6,12 @@ namespace Runtime.Controller.LevelControllers
     public class LevelFailedCommand : Command
     {
         [Inject] public LevelSignals LevelSignals { get; set; }
-        [Inject] public GameSignals GameSignals { get; set; }
+        [Inject] public CoreGameSignals CoreGameSignals { get; set; }
 
         public override void Execute()
         {
             LevelSignals.onDestroyLevel?.Dispatch();
-            GameSignals.onReset?.Dispatch();
+            CoreGameSignals.onReset?.Dispatch();
             LevelSignals.onInitializeLevel?.Dispatch();
         }
     }

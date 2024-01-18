@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Rich.Base.Runtime.Concrete.Injectable.Mediator;
 using Runtime.Model.Player;
 using Runtime.Signals;
@@ -12,6 +13,9 @@ namespace Runtime.Mediators.Player
         [Inject] public IPlayerModel Model { get; set; }
         [Inject] public InputSignals InputSignals { get; set; }
         [Inject] public PlayerSignals PlayerSignals { get; set; }
+        [Inject] public CoreGameSignals CoreGameSignals { get; set; }
+
+        [Inject] public UISignals UISignals { get; set; }
 
         public override void OnRegister()
         {
@@ -19,20 +23,52 @@ namespace Runtime.Mediators.Player
             InputSignals.onInputDragged.AddListener(View.OnInputDragged);
             InputSignals.onInputReleased.AddListener(View.OnInputReleased);
             InputSignals.onInputTaken.AddListener(View.OnInputTaken);
+            PlayerSignals.onStageAreaSuccessful.AddListener(StageAreaSuccessful);
+            UISignals.onPlay.AddListener(OnPlay);
 
             View.onReset += OnReset;
-            View.onDisableInput += OnDisableInput;
-            View.onForceCommand += OnForceCommand;
+            View.onStageAreaEntered += OnStageAreaEntered;
+            View.onFinishAreaEntered += OnFinishAreaEntered;
         }
 
-        private void OnDisableInput()
+
+        private void OnPlay()
         {
+            View.IsReadyToPlay(true);
+        }
+
+        private void OnStageAreaEntered(Transform view)
+        {
+            PlayerSignals.onForceCommand.Dispatch(view, Model.PlayerData.PlayerData.ForceData);
             InputSignals.onDisableInput.Dispatch();
+
+            DOVirtual.DelayedCall(3, () =>
+            {
+                bool result = (bool)PlayerSignals.onGetPoolResult?.Invoke(Model.StageValue);
+
+                if (result)
+                {
+                    PlayerSignals.onStageAreaSuccessful.Dispatch(Model.StageValue);
+                    InputSignals.onEnableInput.Dispatch();
+                }
+                else
+                {
+                    CoreGameSignals.onLevelFailed.Dispatch();
+                }
+            });
         }
 
-        private void OnForceCommand(Transform transformParams)
+        private void StageAreaSuccessful(byte obj)
         {
-            PlayerSignals.onForceCommand.Dispatch(transformParams);
+            Model.StageValue++;
+            View.ShowUpText();
+            View.PlayConfettiParticle();
+            View.ScaleUpPlayer();
+        }
+
+        private void OnFinishAreaEntered()
+        {
+            CoreGameSignals.onLevelSuccessful?.Dispatch();
         }
 
         private void OnReset()
@@ -46,10 +82,12 @@ namespace Runtime.Mediators.Player
             InputSignals.onInputDragged.RemoveListener(View.OnInputDragged);
             InputSignals.onInputReleased.RemoveListener(View.OnInputReleased);
             InputSignals.onInputTaken.RemoveListener(View.OnInputTaken);
+            PlayerSignals.onStageAreaSuccessful.RemoveListener(StageAreaSuccessful);
+            UISignals.onPlay.RemoveListener(OnPlay);
 
             View.onReset -= OnReset;
-            View.onDisableInput -= OnDisableInput;
-            View.onForceCommand -= OnForceCommand;
+            View.onStageAreaEntered -= OnStageAreaEntered;
+            View.onFinishAreaEntered -= OnFinishAreaEntered;
         }
 
         public override void OnEnabled()

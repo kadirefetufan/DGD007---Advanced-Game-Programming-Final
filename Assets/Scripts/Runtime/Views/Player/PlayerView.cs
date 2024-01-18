@@ -17,8 +17,8 @@ namespace Runtime.Views.Player
         #region Public Variables
 
         public UnityAction onReset = delegate { };
-        public UnityAction onDisableInput = delegate { };
-        public UnityAction<Transform> onForceCommand = delegate { };
+        public UnityAction<Transform> onStageAreaEntered = delegate { };
+        public UnityAction onFinishAreaEntered = delegate { };
 
         #endregion
 
@@ -112,7 +112,7 @@ namespace Runtime.Views.Player
             rigidbody.position = position;
         }
 
-        private void IsReadyToPlay(bool condition)
+        internal void IsReadyToPlay(bool condition)
         {
             _isReadyToPlay = condition;
         }
@@ -126,32 +126,14 @@ namespace Runtime.Views.Player
         {
             if (other.CompareTag(_stageArea))
             {
-                onForceCommand?.Invoke(transform);
-                //CoreGameSignals.Instance.onStageAreaEntered?.Invoke();
-                onDisableInput?.Invoke();
+                onStageAreaEntered?.Invoke(transform);
 
-                // DOVirtual.DelayedCall(3, () =>
-                // {
-                //     var result = other.transform.parent.GetComponentInChildren<PoolController>()
-                //         .TakeResults(manager.StageValue);
-                //
-                //     if (result)
-                //     {
-                //         CoreGameSignals.Instance.onStageAreaSuccessful?.Invoke(manager.StageValue);
-                //         InputSignals.Instance.onEnableInput?.Invoke();
-                //     }
-                //     else
-                //     {
-                //         CoreGameSignals.Instance.onLevelFailed?.Invoke();
-                //     }
-                // });
-                // return;
+                IsReadyToPlay(false);
             }
 
             if (other.CompareTag(_finish))
             {
-                //CoreGameSignals.Instance.onFinishAreaEntered?.Invoke();
-                onDisableInput?.Invoke();
+                onFinishAreaEntered?.Invoke();
                 return;
             }
 
@@ -175,7 +157,7 @@ namespace Runtime.Views.Player
                 scaleText.rectTransform.DOAnchorPosY(-.85f, .65f).SetRelative(true));
         }
 
-        internal void PlayConfetiParticle()
+        internal void PlayConfettiParticle()
         {
             confettiParticle.Play();
         }

@@ -4,52 +4,50 @@ using UnityEngine;
 
 namespace Rich.Base.Runtime.Concrete.Injectable.Mediator
 {
-	[System.Serializable]
+    [System.Serializable]
     public class MediatorLite : IMediator
     {
-        [Inject(ContextKeys.CONTEXT_VIEW)]
-        public GameObject contextView{get;set;}
+        [Inject(ContextKeys.CONTEXT_VIEW)] public GameObject contextView { get; set; }
 
-        public MediatorLite ()
+        public MediatorLite()
         {
         }
 
         /**
-		 * Fires directly after creation and before injection
-		 */
+         * Fires directly after creation and before injection
+         */
         virtual public void PreRegister()
         {
         }
 
         /**
-		 * Fires after all injections satisifed.
-		 *
-		 * Override and place your initialization code here.
-		 */
+         * Fires after all injections satisifed.
+         *
+         * Override and place your initialization code here.
+         */
         virtual public void OnRegister()
         {
-			
         }
 
         /**
-		 * Fires on removal of view.
-		 *
-		 * Override and place your cleanup code here
-		 */
+         * Fires on removal of view.
+         *
+         * Override and place your cleanup code here
+         */
         virtual public void OnRemove()
         {
         }
 
         /**
-		 * Fires on enabling of view.
-		 */
+         * Fires on enabling of view.
+         */
         virtual public void OnEnabled()
         {
         }
 
         /**
-		 * Fires on disabling of view.
-		 */
+         * Fires on disabling of view.
+         */
         virtual public void OnDisabled()
         {
         }

@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9caa6c3932463484943763048b3da0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7605cdea3796848d68238e36bf4f951e, type: 3}
   m_Name: CD_Player
   m_EditorClassIdentifier: 
   PlayerData:
     MovementData:
       ForwardSpeed: 0
       SidewaysSpeed: 0
+    MeshData:
+      ScaleCounter: 0
+    ForceData:
       ForwardForceCounter:
         x: 0
         y: 0
-    MeshData:
-      ScaleCounter: 0

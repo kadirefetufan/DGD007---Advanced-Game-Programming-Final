@@ -9,13 +9,13 @@ namespace Runtime.Controller.LevelControllers
     {
         [Inject] public ILevelModel LevelModel { get; set; }
         [Inject] public LevelSignals LevelSignals { get; set; }
-        [Inject] public GameSignals GameSignals { get; set; }
+        [Inject] public CoreGameSignals CoreGameSignals { get; set; }
 
         public override void Execute()
         {
             LevelModel.IncrementLevel();
             LevelSignals.onDestroyLevel?.Dispatch();
-            GameSignals.onReset?.Dispatch();
+            CoreGameSignals.onReset?.Dispatch();
             LevelSignals.onInitializeLevel?.Dispatch();
         }
     }

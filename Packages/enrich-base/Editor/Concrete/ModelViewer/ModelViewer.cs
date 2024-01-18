@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Rich.Base.Runtime.Abstract.Injectable.Binder;
 using Rich.Base.Runtime.Abstract.Injectable.Provider;
 using Rich.Base.Runtime.Concrete.Root;
 using Rich.Base.Runtime.Signals;
