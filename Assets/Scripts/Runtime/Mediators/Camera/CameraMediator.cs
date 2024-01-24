@@ -2,34 +2,30 @@ using Rich.Base.Runtime.Concrete.Injectable.Mediator;
 using Runtime.Signals;
 using Runtime.Views.Camera;
 
-
 namespace Runtime.Mediators.Camera
 {
     public class CameraMediator : MediatorLite
     {
-        [Inject] public CameraView View { get; set; }
-        [Inject] public CameraSignals CameraSignals { get; set; }
-        [Inject] public CoreGameSignals CoreGameSignals { get; set; }
+        [Inject] private CameraView _cameraView { get; set; }
+        [Inject] private CameraSignals _cameraSignals { get; set; }
 
         public override void OnRegister()
         {
             base.OnRegister();
 
-            CameraSignals.onSetCameraTarget.AddListener(OnSetCameraTarget);
-            CoreGameSignals.onReset.AddListener(View.OnReset);
+            _cameraSignals.onSetCameraTarget.AddListener(OnSetCameraTarget);
         }
 
         private void OnSetCameraTarget()
         {
-            View.AssignCameraTarget();
+            _cameraView.AssignCameraTarget();
         }
 
         public override void OnRemove()
         {
             base.OnRemove();
 
-            CameraSignals.onSetCameraTarget.RemoveListener(OnSetCameraTarget);
-            CoreGameSignals.onReset.RemoveListener(View.OnReset);
+            _cameraSignals.onSetCameraTarget.RemoveListener(OnSetCameraTarget);
         }
     }
 }

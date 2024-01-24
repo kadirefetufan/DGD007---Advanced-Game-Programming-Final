@@ -31,22 +31,15 @@ MonoBehaviour:
     assemblyNames:
     - rich-base.runtime
     - ES3.Runtime
-    - sc.stylizedwater2.runtime
     - StompyRobot.SRF
-    - Assembly-CSharp
     - Cinemachine
-    - Boxophobic.Utils.Editor
+    - Assembly-CSharp
     - rich-base.editor
     - Assembly-CSharp-firstpass
     - PPv2URPConverters
     - StompyRobot.SRDebugger
-    - Boxophobic.PolyverseSkies.Editor
-    - Boxophobic.Utils.Scripts
     - StompyRobot.SRDebugger.Editor
-    - sc.stylizedwater2.editor
     - StompyRobot.SRF.Editor
-    - Boxophobic.PolyverseSkies.Runtime
-    - Boxophobic.PolyverseSkies.Scripts
     - Sirenix.OdinInspector.Modules.UnityMathematics
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

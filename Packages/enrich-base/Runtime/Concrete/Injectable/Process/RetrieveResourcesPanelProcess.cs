@@ -8,21 +8,20 @@ namespace Rich.Base.Runtime.Concrete.Injectable.Process
 {
     public class RetrieveResourcesPanelProcess : CoroutineProcess<RetrieveResourcesPanelProcess>
     {
-        [Inject] public CoreScreenSignals CoreScreenSignals { get; set; }
-
+        [Inject] public CoreScreenSignals CoreScreenSignals{get;set;}
+    
         public IPanelVo PanelVo;
-
+    
         protected override IEnumerator Routine()
         {
-            ResourceRequest request = Resources.LoadAsync("Screens/" + PanelVo.Key, typeof(GameObject));
+            ResourceRequest request = Resources.LoadAsync("Screen/" + PanelVo.Key, typeof(GameObject));
             yield return request;
             if (request.asset == null)
             {
                 Debug.LogError("LoadFromResources! Panel not found!! " + PanelVo.Key);
                 yield break;
             }
-
-            CoreScreenSignals.AfterRetrievedPanel.Dispatch(PanelVo, request.asset as GameObject);
+            CoreScreenSignals.AfterRetrievedPanel.Dispatch(PanelVo,request.asset as GameObject);
         }
     }
 }

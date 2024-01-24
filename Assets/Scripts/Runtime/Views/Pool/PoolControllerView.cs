@@ -27,8 +27,12 @@ namespace Runtime.Views.Pool
 
         public bool OnGetPoolResult(byte managerStageValue)
         {
-            if (StageValue != managerStageValue) return false;
-            return _collectedCount >= _data.RequiredObjectCount;
+            if (StageValue == managerStageValue)
+            {
+                return _collectedCount >= _data.RequiredObjectCount;
+            }
+
+            return false;
         }
 
         public void SetPoolData(PoolData poolData)

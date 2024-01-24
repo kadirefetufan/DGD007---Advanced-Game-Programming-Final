@@ -1,10 +1,10 @@
-using Rich.Base.Runtime.Concrete.Injectable.Mediator;
 using Runtime.Signals;
 using Runtime.Views.Screen;
+using strange.extensions.mediation.impl;
 
 namespace Runtime.Mediators.Screen
 {
-    public class LevelScreenMediator : MediatorLite
+    public class LevelScreenMediator : Mediator
     {
         [Inject] public UISignals UISignals { get; set; }
         [Inject] public LevelScreenView View { get; set; }

@@ -69,7 +69,7 @@ namespace Runtime.Model.Level
             {
                 if (ES3.KeyExists("Level"))
                 {
-                    return ES3.Load<byte>("Level", 0);
+                    return ES3.Load<byte>("Level");
                 }
             }
 

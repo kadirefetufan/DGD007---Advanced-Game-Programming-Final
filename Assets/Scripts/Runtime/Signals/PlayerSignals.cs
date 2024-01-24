@@ -9,5 +9,6 @@ namespace Runtime.Signals
     {
         public Signal<Transform, PlayerForceData> onForceCommand = new Signal<Transform, PlayerForceData>();
         public Signal<byte> onStageAreaSuccessful = new Signal<byte>();
+        public Func<byte, bool> onGetPoolResult;
     }
 }
