@@ -1,9 +1,11 @@
 {
     "name": "rich-base.editor",
+    "rootNamespace": "",
     "references": [
         "GUID:e5160b5cfc335cd419f41616e228bc83",
         "GUID:29c250a97e54e43ceba4a37b353452c2",
-        "GUID:8dbf22d4d03ec40dc88eeeba4fea25f9"
+        "GUID:8dbf22d4d03ec40dc88eeeba4fea25f9",
+        "GUID:eb60c5d867438334ea3aa3cf6f02c5b3"
     ],
     "includePlatforms": [
         "Editor"
