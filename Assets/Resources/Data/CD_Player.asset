@@ -17,8 +17,8 @@ MonoBehaviour:
       ForwardSpeed: 3
       SidewaysSpeed: 3
     MeshData:
-      ScaleCounter: 0
+      ScaleCounter: 2
     ForceData:
       ForwardForceCounter:
-        x: 0
-        y: 0
+        x: 5
+        y: 5

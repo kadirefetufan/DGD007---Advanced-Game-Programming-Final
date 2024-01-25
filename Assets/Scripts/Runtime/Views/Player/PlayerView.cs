@@ -54,6 +54,7 @@ namespace Runtime.Views.Player
             _playerData = playerData;
         }
 
+
         public void OnInputDragged(HorizontalInputParams horizontalInputParams)
         {
             _xValue = horizontalInputParams.HorizontalValue;

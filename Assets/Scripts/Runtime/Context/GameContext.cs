@@ -16,6 +16,7 @@ using Runtime.Views.Input;
 using Runtime.Views.Player;
 using Runtime.Views.Pool;
 
+
 namespace Runtime.Context
 {
     public class GameContext : RichMVCContext
@@ -41,6 +42,8 @@ namespace Runtime.Context
             injectionBinder.Bind<IInputModel>().To<InputModel>().CrossContext().ToSingleton();
             injectionBinder.Bind<IPlayerModel>().To<PlayerModel>().CrossContext().ToSingleton();
 
+            
+
             //Mediation Bindings
 
             mediationBinder.BindView<CameraView>().ToMediator<CameraMediator>();
@@ -59,6 +62,13 @@ namespace Runtime.Context
 
             commandBinder.Bind(_playerSignals.onForceCommand).To<ForceBallsToPoolCommand>();
             commandBinder.Bind(_playerSignals.onStageAreaSuccessful).To<OnStageAreaSuccessfulCommand>();
+
+
+            
+
+           
+
+
         }
 
         public override void Launch()
