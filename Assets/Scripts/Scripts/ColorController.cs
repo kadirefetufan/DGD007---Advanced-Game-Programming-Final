@@ -8,7 +8,7 @@ public class ColorController : MonoBehaviour
     {
         Debug.Log("Trigger entered by: " + other.name);
       
-        Debug.Log("Tag of the object: " + other.tag); // Bu satýr etiketi log'lar
+        Debug.Log("Tag of the object: " + other.tag); 
 
         if (other.CompareTag("Portal")) // Etiketi burada kontrol ediyoruz
         {
