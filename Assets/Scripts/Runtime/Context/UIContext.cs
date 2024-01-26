@@ -1,4 +1,6 @@
+using Rich.Base.Runtime.Abstract.Model;
 using Rich.Base.Runtime.Concrete.Context;
+using Rich.Base.Runtime.Concrete.Model;
 using Rich.Base.Runtime.Extensions;
 using Rich.Base.Runtime.Signals;
 using Runtime.Mediators.Screen;
@@ -19,6 +21,8 @@ namespace Runtime.Context
             //Injection Bindings
             _uiSignals = injectionBinder.BindCrossContextSingletonSafely<UISignals>();
             _coreScreenSignals = injectionBinder.BindCrossContextSingletonSafely<CoreScreenSignals>();
+            injectionBinder.Bind<IScreenModel>().To<ScreenModel>().ToSingleton();
+
 
             //Mediation Bindings
             mediationBinder.BindView<LevelScreenView>().ToMediator<LevelScreenMediator>();
