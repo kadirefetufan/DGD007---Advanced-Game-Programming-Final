@@ -1,44 +1,34 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerInteractionController : MonoBehaviour
 {
     public GameObject cubePrefab; // Küp prefab'ýný buradan atayýn
-    private GameObject spawnedCube; // Oluþturulan küp için referans
+    private List<GameObject> spawnedCubes = new List<GameObject>(); // Oluþturulan küplerin listesi
 
     private void OnTriggerEnter(Collider other)
     {
-        // Eðer nesne "Man" etiketine sahipse
+        // Etkileþime girilen nesneyi yok et
+        
+
         if (other.CompareTag("Collectable"))
         {
-            // Karþýlaþýlan nesneyi yok et
             Destroy(other.gameObject);
+            // Collectable ile etkileþime girildiðinde yeni bir küp oluþtur
+            Vector3 spawnPosition = spawnedCubes.Count > 0
+                ? spawnedCubes[spawnedCubes.Count - 1].transform.position - transform.forward
+                : transform.position - transform.forward;
 
-            // Karþýlaþýlan nesnenin SkinnedMeshRenderer'ýný kontrol et
-            SkinnedMeshRenderer otherSkinnedMeshRenderer = other.GetComponent<SkinnedMeshRenderer>();
-            SkinnedMeshRenderer playerSkinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
-
-            if (otherSkinnedMeshRenderer != null && playerSkinnedMeshRenderer != null)
-            {
-                // Karakter ve nesne ayný SkinnedMeshRenderer'a sahipse
-                if (otherSkinnedMeshRenderer.sharedMesh == playerSkinnedMeshRenderer.sharedMesh)
-                {
-                    // Arkada bir küp oluþtur
-                    if (spawnedCube == null)
-                    {
-                        Vector3 spawnPosition = transform.position - transform.forward; // Karakterin arkasýnda
-                        spawnedCube = Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
-                    }
-                }
-                else
-                {
-                    // Arkadaki küpü yok et
-                    if (spawnedCube != null)
-                    {
-                        Destroy(spawnedCube);
-                        spawnedCube = null;
-                    }
-                }
-            }
+            GameObject newCube = Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
+            spawnedCubes.Add(newCube);
+        }
+        else if (other.CompareTag("Collected") && spawnedCubes.Count > 0)
+        {
+            Destroy(other.gameObject);
+            // Collected ile etkileþime girildiðinde son küpü yok et
+            GameObject lastCube = spawnedCubes[spawnedCubes.Count - 1];
+            spawnedCubes.Remove(lastCube);
+            Destroy(lastCube);
         }
     }
 }

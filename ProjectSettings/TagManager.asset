@@ -12,6 +12,8 @@ TagManager:
   - DroneArea
   - ColoredGround
   - DroneAreaPhysics
+  - Collected
+  - Man
   layers:
   - Default
   - TransparentFX
