@@ -2081,6 +2081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IdlePortal
       objectReference: {fileID: 0}
+    - target: {fileID: 7100447273257721369, guid: a8bac55e5d864784f82e39ad65f5191d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7100447273257721373, guid: a8bac55e5d864784f82e39ad65f5191d,
         type: 3}
       propertyPath: m_RootOrder
@@ -2542,8 +2547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f950e36eb6efb49912d49d59f2d5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ColorType: 2
   meshRenderer: {fileID: 5296914618772564978}
-  newMaterial: {fileID: 2100000, guid: b6faad7a2ec379b44b214b7e4360e43a, type: 2}
+  materials: []
 --- !u!23 &5296914618772564978 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7100447273257721371, guid: d113d8c8de5d5b741b7bb6ee42e46213,
