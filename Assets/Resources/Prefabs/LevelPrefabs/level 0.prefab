@@ -2453,7 +2453,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d7cdca0e6463a4543acc2f9172adcd51, type: 2}
+      objectReference: {fileID: 2100000, guid: aeb564f9d55cca34f907e48bab31cc68, type: 2}
     - target: {fileID: 7100447273257721373, guid: d113d8c8de5d5b741b7bb6ee42e46213,
         type: 3}
       propertyPath: m_RootOrder
@@ -2547,9 +2547,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f950e36eb6efb49912d49d59f2d5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorType: 2
+  ColorType: 1
+  targetTag: GameTag
   meshRenderer: {fileID: 5296914618772564978}
-  materials: []
+  materials:
+  - {fileID: 2100000, guid: 9af77edcd286cd745bfde62734e1aa08, type: 2}
 --- !u!23 &5296914618772564978 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7100447273257721371, guid: d113d8c8de5d5b741b7bb6ee42e46213,
@@ -3355,6 +3357,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4683713894546995193, guid: a73ca50f6831a3942a79ad5dac55cc6c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780865716097045250, guid: a73ca50f6831a3942a79ad5dac55cc6c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e591114b07480e42beebedf1adf80fa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8150369368963967954, guid: a73ca50f6831a3942a79ad5dac55cc6c, type: 3}
