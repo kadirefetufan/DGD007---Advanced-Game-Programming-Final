@@ -75,13 +75,14 @@ namespace Runtime.Views.Player
         {
             if (!_isReadyToPlay)
             {
-                StopPlayer();
+                MovePlayer();//-
+               
                 return;
             }
 
             if (_isReadyToMove)
             {
-                MovePlayer();
+                StopPlayer(); //-
             }
             else
             {

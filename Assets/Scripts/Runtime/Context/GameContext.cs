@@ -41,8 +41,9 @@ namespace Runtime.Context
             injectionBinder.Bind<ILevelModel>().To<LevelModel>().CrossContext().ToSingleton();
             injectionBinder.Bind<IInputModel>().To<InputModel>().CrossContext().ToSingleton();
             injectionBinder.Bind<IPlayerModel>().To<PlayerModel>().CrossContext().ToSingleton();
+            injectionBinder.Bind<StartGameSignal>().ToSingleton().CrossContext();
 
-            
+
 
             //Mediation Bindings
 
