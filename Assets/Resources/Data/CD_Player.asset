@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerData:
     MovementData:
-      ForwardSpeed: 3
-      SidewaysSpeed: 3
+      ForwardSpeed: 12
+      SidewaysSpeed: 6
     MeshData:
-      ScaleCounter: 2
+      ScaleCounter: 1.2
     ForceData:
       ForwardForceCounter:
-        x: 5
-        y: 5
+        x: 4.65
+        y: 0.15

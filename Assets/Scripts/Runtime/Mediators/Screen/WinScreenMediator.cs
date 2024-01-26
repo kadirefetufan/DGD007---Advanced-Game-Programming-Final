@@ -1,11 +1,11 @@
+using Rich.Base.Runtime.Concrete.Injectable.Mediator;
 using Rich.Base.Runtime.Signals;
 using Runtime.Signals;
 using Runtime.Views.Screen;
-using strange.extensions.mediation.impl;
 
 namespace Runtime.Mediators.Screen
 {
-    public class WinScreenMediator : Mediator
+    public class WinScreenMediator : MediatorLite
     {
         [Inject] public WinScreenView View { get; set; }
         [Inject] public LevelSignals LevelSignals { get; set; }
