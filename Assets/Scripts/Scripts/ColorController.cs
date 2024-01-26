@@ -1,67 +1,35 @@
-using Enums;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorController : MonoBehaviour
 {
-    public ColorTypes ColorType;
-    public string targetTag = "GameTag"; // Deðiþtirilecek materyalin tag'ý
+    public Material newColorMaterial; // Karakterin deðiþeceði yeni renk
 
-    [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private Material[] materials; // Malzemeleri burada saklayýn
-
-    // Materyal ve tag'larý eþleþtirmek için bir sözlük
-    private Dictionary<Material, string> materialTags = new Dictionary<Material, string>();
-
-    private void Awake()
+    private void OnTriggerEnter(Collider other)
     {
-        ChangeAreaColor(ColorType);
-        InitializeMaterialTags();
-    }
+        Debug.Log("Trigger entered by: " + other.name);
+      
+        Debug.Log("Tag of the object: " + other.tag); // Bu satýr etiketi log'lar
 
-    // Materyal ve tag eþleþtirmelerini baþlatmak için bir metod
-    private void InitializeMaterialTags()
-    {
-        foreach (Material mat in materials)
+        if (other.CompareTag("Portal")) // Etiketi burada kontrol ediyoruz
         {
-            // Burada her materyali bir tag ile eþleþtirin
-            // Örnek: materialTags[mat] = "BazýTag";
-           materialTags[mat] = "BazýTag";
-        }
-    }
-
-    public void ChangeAreaColor(ColorTypes _colorType)
-    {
-        // _colorType deðerinin materials dizisinin boyutu içinde olduðunu kontrol edin
-        if ((int)_colorType >= 0 && (int)_colorType < materials.Length)
-        {
-            Material selectedMaterial = materials[(int)_colorType];
-            if (selectedMaterial != null)
+            Debug.Log("Correct tag found, changing color.");
+            SkinnedMeshRenderer skinnedMeshRenderer = other.GetComponent<SkinnedMeshRenderer>();
+            if (skinnedMeshRenderer != null)
             {
-                meshRenderer.material = selectedMaterial;
+                Debug.Log("SkinnedMeshRenderer found, changing material.");
+                skinnedMeshRenderer.material = newColorMaterial; // Burada malzemeyi deðiþtiriyoruz
+            }
+            else
+            {
+                Debug.Log("SkinnedMeshRenderer not found on the player.");
             }
         }
         else
         {
-            Debug.LogError("ColorType index is out of range. Please check the materials array and ColorType enum.");
+            Debug.Log("Tag not matched.");
         }
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        MeshRenderer otherMeshRenderer = other.GetComponent<MeshRenderer>();
-        if (otherMeshRenderer != null)
-        {
-            // Geçen nesnenin materyallerini kontrol et
-            foreach (Material mat in otherMeshRenderer.materials)
-            {
-                // Eðer materyal belirli bir tag ile eþleþtirilmiþse, onu deðiþtir
-                if (materialTags.ContainsKey(mat) && materialTags[mat] == targetTag)
-                {
-                    mat.CopyPropertiesFromMaterial(meshRenderer.material);
-                }
-            }
-        }
-    }
+
 }
